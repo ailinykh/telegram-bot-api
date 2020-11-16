@@ -9,4 +9,5 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=.. .. && \
 FROM alpine:latest
 RUN apk update && apk add --no-cache libstdc++
 COPY --from=builder /telegram-bot-api/bin/telegram-bot-api /usr/bin/telegram-bot-api
+EXPOSE 8081
 ENTRYPOINT telegram-bot-api --api-id=${API_ID} --api-hash=${API_HASH}
